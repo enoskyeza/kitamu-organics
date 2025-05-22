@@ -2,6 +2,8 @@
 
 :root {
   --background: #ffffff;
+  --custom-bg: radial-gradient(circle at top left, #f0e68c, transparent),
+            linear-gradient(135deg, #a8e063, #56ab2f);
   --foreground: #171717;
 }
 
@@ -24,3 +26,29 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+
+@layer utilities {
+    .custom-bg {
+    background-color: #1a5e20;
+    background-image:
+      url('/bg-drip.svg'),
+      linear-gradient(to bottom, #bfa225, #bfa225);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100% auto;
+  }
+
+  /* lightweight bobbing animation */
+  .bob {
+    animation: bob 3s ease-in-out infinite;
+    will-change: transform;
+  }
+}
+
+

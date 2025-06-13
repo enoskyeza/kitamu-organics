@@ -74,16 +74,16 @@ export default function ComingSoon() {
           <Image
             src='/bee.svg'
             alt='Floating bee'
-            width={100}
-            height={100}
-            className="bob absolute top-[70%] left-[34%] z-1"
+            width={90}
+            height={90}
+            className="bob absolute top-[71%] left-[34%] z-1"
           />
           <Image
               src='/jar.png'
               alt='Jar of honey'
               height={200}
-              width={350}
-              className='absolute top-[75%] left-[25%] z-0'
+              width={250}
+              className='absolute top-[80%] left-[35%] z-0'
           />
         </div>
       </div>

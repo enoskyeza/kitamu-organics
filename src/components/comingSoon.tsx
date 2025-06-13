@@ -20,7 +20,7 @@ export default function ComingSoon() {
 
 
       {/* Main content: full-center */}
-      <div className="flex-grow flex flex-col xs:bg-red-500 justify-center items-center text-center space-y-5 sm:space-y-5">
+      <div className="flex-grow flex flex-col xs:justify-center items-center text-center space-y-5 sm:space-y-5">
             {/* Logo */}
             <Image
               src="/logo.png"

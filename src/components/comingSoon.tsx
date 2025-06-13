@@ -1,6 +1,7 @@
 'use client'
 import { useState, FormEvent } from "react";
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
+import Image from "next/image";
 
 export default function ComingSoon() {
   const [email, setEmail] = useState("");
@@ -15,25 +16,44 @@ export default function ComingSoon() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-green-800 p-6 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col theme-bg-light p-6 relative overflow-hidden">
+
+
       {/* Main content: full-center */}
-      <div className="flex-grow flex flex-col justify-center items-center text-center space-y-6">
-        <h1 className="text-6xl sm:text-7xl font-extrabold text-orange-100">
-          Kitamu Natural Organics
+      <div className="flex-grow flex flex-col xs:bg-red-500 justify-center items-center text-center space-y-5 sm:space-y-5">
+            {/* Logo */}
+            <Image
+              src="/logo.png"
+              alt="Kitamu Organics Logo"
+              width={180}
+              height={100}
+              className=""
+            />
+        {/*<div className='w-full relative'>*/}
+        {/*<Image*/}
+        {/*    src='/bee.svg'*/}
+        {/*    alt='Floating bee'*/}
+        {/*    width={160}*/}
+        {/*    height={160}*/}
+        {/*    className="bob absolute top-0 left-0"*/}
+        {/*/>*/}
+        {/*</div>*/}
+        <h1 className="text-4xl sm:text-7xl font-extrabold text-green-950">
+          COMING SOON
         </h1>
-        <p className="text-xl text-orange-200 max-w-md">
+        <p className=" text-lg sm:text-xl text-green-900 max-w-md">
           Our online shop is under construction. Enter your email and we&#39;ll let you know when we launch.
         </p>
 
         {/* Email input & button inline */}
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col w-full sm:w-fit sm:flex-row sm:items-center gap-4">
           <input
             type="email"
             required
             placeholder="Your email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-64 p-3 rounded-md border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            className="sm:w-64 p-3 rounded-md border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
           <button
             type="submit"
@@ -49,11 +69,28 @@ export default function ComingSoon() {
             <p>Thanks! We&#39;ll notify you at your email soon.</p>
           </div>
         )}
+
+        <div className="sm:hidden">
+          <Image
+            src='/bee.svg'
+            alt='Floating bee'
+            width={100}
+            height={100}
+            className="bob absolute top-[70%] left-[34%] z-1"
+          />
+          <Image
+              src='/jar.png'
+              alt='Jar of honey'
+              height={200}
+              width={350}
+              className='absolute top-[75%] left-[25%] z-0'
+          />
+        </div>
       </div>
 
       {/* Socials & contact footer */}
-      <footer className="mt-auto pt-12 w-full flex flex-col items-center gap-4">
-        <div className="flex gap-6 text-white">
+      <footer className="z-10 mt-auto pt-12 w-full flex flex-col sm:items-center gap-4">
+        <div className="flex gap-6 text-green-800">
           <a href="https://facebook.com/kitamunaturalorganics" target="_blank" rel="noopener noreferrer"
              className="hover:text-orange-100 text-2xl">
             <FaFacebook />
@@ -67,7 +104,7 @@ export default function ComingSoon() {
             <FaYoutube />
           </a>
         </div>
-        <div className="flex flex-col sm:flex-row items-center gap-4 text-white">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-green-800">
           <a href="tel:+256782976755" className="hover:text-gray-200">
             +256 782 976 755
           </a>

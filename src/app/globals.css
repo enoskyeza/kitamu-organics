@@ -4,6 +4,7 @@
   --background: #ffffff;
   --custom-bg: radial-gradient(circle at top left, #f0e68c, transparent),
             linear-gradient(135deg, #a8e063, #56ab2f);
+  --light-bg: #F6F4F0;
   --foreground: #171717;
 }
 
@@ -20,6 +21,23 @@
     --foreground: #ededed;
   }
 }
+
+
+/* CUSTOM STYLES AND CLASSES */
+@font-face {
+  font-family: 'Ambery Garden';
+  src: url('/fonts/AmberyGarden.woff2') format('woff2'),
+       url('/fonts/AmberyGarden.woff')  format('woff'),
+       url('/fonts/AmberyGarden.otf')   format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-ambery {
+font-family: 'Ambery Garden', sans-serif;
+}
+
 
 body {
   background: var(--background);
@@ -42,6 +60,10 @@ body {
     background-repeat: no-repeat;
     background-position: top center;
     background-size: 100% auto;
+  }
+
+  .theme-bg-light{
+        background: var(--light-bg);
   }
 
   /* lightweight bobbing animation */

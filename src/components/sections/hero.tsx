@@ -1,0 +1,77 @@
+'use client'
+
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+
+export default function HeroSection() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && videoRef.current && !isVideoLoaded) {
+            videoRef.current.play();
+            setIsVideoLoaded(true);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (videoRef.current) observer.observe(videoRef.current);
+
+    return () => {
+      if (videoRef.current) observer.unobserve(videoRef.current);
+    };
+  }, [isVideoLoaded]);
+
+  return (
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Poster image loads fast */}
+      <Image
+        src="/images/bee-farm-thumb.jpg"
+        alt="Beekeepers in Northern Uganda"
+        fill
+        priority
+        className="object-cover z-0"
+      />
+
+      {/* Overlay tint */}
+      <div className="absolute inset-0 bg-green-950/80 mix-blend-multiply z-10" />
+
+      {/* Background video */}
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        poster="/images/bee-farm-thumb.jpg"
+        muted
+        loop
+        playsInline
+        preload="none"
+      >
+        <source src="/videos/bee-farming.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Hero Content */}
+      <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-16">
+        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
+          Nature-Based Beekeeping for Regeneration
+        </h1>
+        <p className="mt-4 text-lg sm:text-xl text-white/90 max-w-2xl">
+          Empowering 4,000+ households with eco-friendly livelihoods in Northern Uganda.
+        </p>
+        <div className="mt-6 flex gap-4">
+          <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition">
+            Explore Products
+          </button>
+          <button className="bg-white/90 hover:bg-white text-green-800 font-semibold py-3 px-6 rounded-xl shadow-md transition">
+            Learn More
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}

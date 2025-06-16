@@ -1,6 +1,7 @@
 'use client'
 import { useState, FormEvent } from 'react';
 import { FaFacebook, FaTwitter, FaYoutube } from 'react-icons/fa';
+import Link from "next/link";
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -51,15 +52,15 @@ export default function Footer() {
               Promoting nature-based beekeeping for eco-friendly livelihoods in Northern Uganda.
             </p>
             <div className="flex space-x-4 text-2xl">
-              <a href="https://facebook.com/kitamunaturalorganics" target="_blank" rel="noopener noreferrer">
+              <Link href="https://facebook.com/kitamunaturalorganics" target="_blank" rel="noopener noreferrer">
                 <FaFacebook className="hover:text-white" />
-              </a>
-              <a href="https://twitter.com/kitamunaturalorganics" target="_blank" rel="noopener noreferrer">
+              </Link>
+              <Link href="https://twitter.com/kitamunaturalorganics" target="_blank" rel="noopener noreferrer">
                 <FaTwitter className="hover:text-white" />
-              </a>
-              <a href="https://youtube.com/kitamunaturalorganics" target="_blank" rel="noopener noreferrer">
+              </Link>
+              <Link href="https://youtube.com/kitamunaturalorganics" target="_blank" rel="noopener noreferrer">
                 <FaYoutube className="hover:text-white" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -67,10 +68,10 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-xl mb-2">Pages</h3>
             <ul className="space-y-1 text-sm">
-              <li><a href="/" className="hover:text-white">Home</a></li>
-              <li><a href="/products" className="hover:text-white">Products</a></li>
-              <li><a href="/about" className="hover:text-white">About</a></li>
-              <li><a href="/contact" className="hover:text-white">Contact</a></li>
+              <li><Link href="/" className="hover:text-white">Home</Link></li>
+              <li><Link href="/products" className="hover:text-white">Products</Link></li>
+              <li><Link href="/about" className="hover:text-white">About</Link></li>
+              <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
             </ul>
           </div>
 
@@ -80,8 +81,8 @@ export default function Footer() {
             <ul className="text-sm space-y-1">
               <li>Kitamu Natural Organics Ltd.</li>
               <li>P.O. Box 123, Kitgum, Uganda</li>
-              <li><a href="mailto:info@kitamunaturalorganics.com" className="hover:text-white">info@kitamunaturalorganics.com</a></li>
-              <li><a href="tel:+256782976755" className="hover:text-white">+256 782 976 755</a></li>
+              <li><Link href="mailto:info@kitamunaturalorganics.com" className="hover:text-white">info@kitamunaturalorganics.com</Link></li>
+              <li><Link href="tel:+256782976755" className="hover:text-white">+256 782 976 755</Link></li>
             </ul>
           </div>
         </div>

@@ -1,0 +1,4 @@
+<!-- public/torn-edge.svg -->
+<svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg">
+  <path fill="#fff" d="M0,60 C200,0 400,60 600,0 800,60 1000,0 1200,60 L1200,0 L0,0 Z"/>
+</svg>

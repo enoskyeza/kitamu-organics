@@ -13,7 +13,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative pt-20 theme-bg-light">
+    <footer className="relative pt-20">
 
         <div className="sm:absolute sm:inset-x-0 sm:bottom-[70%] flex justify-center">
           <form

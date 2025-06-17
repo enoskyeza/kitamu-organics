@@ -27,8 +27,8 @@ export default function Navbar() {
       className={clsx(
         "fixed z-50 left-1/2 transform -translate-x-1/2 transition-all duration-500",
         scrolled
-          ? "top-0 w-full rounded-none bg-[#F6F4F0] shadow-md"
-          : "top-4 w-[90%] rounded-2xl bg-[#F6F4F0] shadow-xl"
+          ? "top-0 w-full rounded-none bg-white shadow-md"
+          : "top-4 w-[90%] rounded-2xl bg-white shadow-xl"
       )}
     >
       <div className="flex items-center justify-between px-6 py-3">

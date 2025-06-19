@@ -6,6 +6,7 @@ import Footer from "@/components/layout/footer";
 import VideoStorySection from "@/components/sections/project";
 import TeamSection from "@/components/sections/team";
 import Gallery from "@/components/sections/gallery";
+import ServicesSection from "@/components/sections/services";
 
 export default function Home() {
   return (
@@ -13,8 +14,9 @@ export default function Home() {
         <Navbar />
       <HeroSection />
       <AboutSection />
-        <ProductsSection />
+        <ServicesSection />
         <VideoStorySection />
+        <ProductsSection />
         <TeamSection />
         <Gallery />
         <Footer />

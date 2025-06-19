@@ -5,7 +5,7 @@ const VideoStorySection = () => {
     <section className="bg-[#1a3e2a] text-white py-16 px-4 relative">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Real Impact. Real People.</h2>
+          <h2 className="thm-section-title font-bold mb-4">Real Impact. Real People.</h2>
           <p className="text-lg mb-6">
             Meet our farmers who are transforming their communities through sustainable
             beekeeping and organic farming. Their stories are what drive our mission forward.
@@ -19,10 +19,10 @@ const VideoStorySection = () => {
             <video
               className="w-full h-full object-cover"
               preload="none"
-              poster="/videos/hero-farmer-thumb.jpg"
+              poster="/images/harvesting.jpg"
               controls
             >
-              <source src="/videos/farmer-story.mp4" type="video/mp4" />
+              <source src="/videos/harvest.MP4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

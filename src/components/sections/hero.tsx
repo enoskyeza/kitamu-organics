@@ -61,13 +61,13 @@ export default function HeroSection() {
           Nature-Based Beekeeping for Regeneration
         </h1>
         <p className="mt-4 text-lg sm:text-xl text-white/90 max-w-2xl">
-          Empowering 4,000+ households with eco-friendly livelihoods in Northern Uganda.
+          Serving 1,000+ households with eco-friendly livelihoods in Northern Uganda.
         </p>
         <div className="mt-6 flex gap-4">
-          <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition">
-            Explore Products
+          <button className="bg-yellow-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition">
+            View Products
           </button>
-          <button className="bg-white/90 hover:bg-white text-green-800 font-semibold py-3 px-6 rounded-xl shadow-md transition">
+          <button className="bg-white/90 hover:bg-green-600 hover:text-white text-green-800 font-semibold py-3 px-6 rounded-xl shadow-md transition">
             Learn More
           </button>
         </div>

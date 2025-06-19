@@ -1,5 +1,6 @@
 // src/components/GallerySection.tsx
 import React from "react";
+import {FaLeaf} from "react-icons/fa";
 
 const images = [
   "/gallery/image1.jpg",
@@ -14,7 +15,18 @@ const GallerySection = () => {
   return (
     <section className="bg-white py-16 px-4">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-10 text-green-900">Our Work in Pictures</h2>
+        <div className="container mx-auto text-center mb-12">
+        <div className="inline-flex items-center justify-center mb-4">
+          <div className="w-10 h-10 flex items-center justify-center rounded-full thm-bg-secondary">
+            <FaLeaf className="text-white text-xl" />
+          </div>
+          <span className="ml-3 text-sm font-medium thm-text-secondary uppercase tracking-wide">
+            Gallery
+          </span>
+        </div>
+        <h2 className="thm-section-title thm-text-primary">Our Work in Pictures</h2>
+      </div>
+
         <div className="columns-2 md:columns-3 gap-4 space-y-4">
           {images.map((src, i) => (
             <img

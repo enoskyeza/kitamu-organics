@@ -41,7 +41,7 @@ export default function Navbar() {
                     : "top-4 w-[90%] rounded-2xl bg-white shadow-xl"
             )}
         >
-            <div className="navbar flex items-center justify-between px-6 py-3">
+            <div className="navbar container flex items-center justify-between px-6 py-3">
                 {/* Logo */}
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -106,8 +106,8 @@ export default function Navbar() {
                           height={50}
                           className="me-3"
                     />
-                    <div className="hidden xs:flex gap-1.5 text-xl font-bold text-green-800">
-                        Kitamu <span className="hidden md:inline-flex">Organics Limited</span>
+                    <div className="hidden xs:flex md:hidden lg:flex gap-1.5 text-xl font-bold text-green-800">
+                        Kitamu <span className="hidden xl:inline-flex">Organics Limited</span>
                     </div>
                 </div>
 

@@ -1,0 +1,203 @@
+/*@import "tailwindcss";*/
+/*@plugin "daisyui";*/
+
+
+/*:root {*/
+/*  --background: #ffffff;*/
+/*  --custom-bg: radial-gradient(circle at top left, #f0e68c, transparent),*/
+/*            linear-gradient(135deg, #a8e063, #56ab2f);*/
+/*  --light-bg: #F6F4F0;*/
+/*  --foreground: #171717;*/
+/*}*/
+
+/*@theme inline {*/
+/*  --color-background: var(--background);*/
+/*  --color-foreground: var(--foreground);*/
+/*  --font-sans: var(--font-geist-sans);*/
+/*  --font-mono: var(--font-geist-mono);*/
+/*    !*  New custom css *!*/
+/*  --breakpoint-xs: 412px;*/
+/*  --breakpoint-xxs: 360px;*/
+/*}*/
+
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --background: #0a0a0a;*/
+/*    --foreground: #ededed;*/
+/*  }*/
+/*}*/
+
+
+/*!* CUSTOM STYLES AND CLASSES *!*/
+/*@font-face {*/
+/*  font-family: 'Ambery Garden';*/
+/*  src: url('/fonts/AmberyGarden.woff2') format('woff2'),*/
+/*       url('/fonts/AmberyGarden.woff')  format('woff'),*/
+/*       url('/fonts/AmberyGarden.otf')   format('opentype');*/
+/*  font-weight: 400;*/
+/*  font-style: normal;*/
+/*  font-display: swap;*/
+/*}*/
+
+/*.font-ambery {*/
+/*font-family: 'Ambery Garden', sans-serif;*/
+/*}*/
+
+
+/*body {*/
+/*  background: var(--background);*/
+/*  color: var(--foreground);*/
+/*  font-family: Arial, Helvetica, sans-serif;*/
+/*}*/
+
+/*@keyframes bob {*/
+/*  0%, 100% { transform: translateY(0); }*/
+/*  50% { transform: translateY(-8px); }*/
+/*}*/
+
+
+/*@layer utilities {*/
+/*    .custom-bg {*/
+/*    background-color: #1a5e20;*/
+/*    background-image:*/
+/*      url('/bg-drip.svg'),*/
+/*      linear-gradient(to bottom, #bfa225, #bfa225);*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: top center;*/
+/*    background-size: 100% auto;*/
+/*  }*/
+
+/*  .theme-bg-light{*/
+/*        background: var(--light-bg);*/
+/*  }*/
+
+/*  !* lightweight bobbing animation *!*/
+/*  .bob {*/
+/*    animation: bob 3s ease-in-out infinite;*/
+/*    will-change: transform;*/
+/*  }*/
+
+/*}*/
+
+
+/*!*@import "tailwindcss";*!*/
+/*!*@plugin "daisyui";*!*/
+
+/*!*!* Root Variables *!*!*/
+/*!*:root {*!*/
+/*!*  --color-white: #FFFFFF;*!*/
+/*!*  --color-light-bg: #F6F4F0;*!*/
+/*!*  --color-pakistan-green: #0F4221;*!*/
+/*!*  --color-pastel-green: #38B549;*!*/
+/*!*  --color-muted-beige: #F5F3EF;*!*/
+/*!*  --color-gold-accent: #BFA225;*!*/
+
+/*!*  !* Fonts *!*!*/
+/*!*  --font-heading: 'Ambery Garden', serif;*!*/
+/*!*  --font-body: 'Geist Sans', 'Inter', sans-serif;*!*/
+
+/*!*  !* Breakpoints *!*!*/
+/*!*  --breakpoint-xs: 412px;*!*/
+/*!*  --breakpoint-xxs: 360px;*!*/
+/*!*}*!*/
+
+/*!*!* Font Face *!*!*/
+/*!*@font-face {*!*/
+/*!*  font-family: 'Ambery Garden';*!*/
+/*!*  src: url('/fonts/AmberyGarden.woff2') format('woff2'),*!*/
+/*!*       url('/fonts/AmberyGarden.woff') format('woff'),*!*/
+/*!*       url('/fonts/AmberyGarden.otf') format('opentype');*!*/
+/*!*  font-weight: 400;*!*/
+/*!*  font-style: normal;*!*/
+/*!*  font-display: swap;*!*/
+/*!*}*!*/
+
+/*!*!* Base Styles *!*!*/
+/*!*body {*!*/
+/*!*  background: var(--color-light-bg);*!*/
+/*!*  color: var(--color-pakistan-green);*!*/
+/*!*  font-family: var(--font-body);*!*/
+/*!*}*!*/
+
+/*!*.font-heading {*!*/
+/*!*  font-family: var(--font-heading);*!*/
+/*!*}*!*/
+
+/*!*!* Animations *!*!*/
+/*!*@keyframes bob {*!*/
+/*!*  0%, 100% { transform: translateY(0); }*!*/
+/*!*  50% { transform: translateY(-8px); }*!*/
+/*!*}*!*/
+
+/*!*!* Custom Utilities *!*!*/
+/*!*@layer utilities {*!*/
+/*!*  !* Container Setup *!*!*/
+/*!*  .container-custom {*!*/
+/*!*    width: 100%;*!*/
+/*!*    margin-left: auto;*!*/
+/*!*    margin-right: auto;*!*/
+/*!*    padding-left: 1rem;*!*/
+/*!*    padding-right: 1rem;*!*/
+/*!*  }*!*/
+
+/*!*  @media (min-width: 360px) { .container-custom { max-width: 340px; }}*!*/
+/*!*  @media (min-width: 412px) { .container-custom { max-width: 392px; }}*!*/
+/*!*  @media (min-width: 640px) { .container-custom { max-width: 600px; }}*!*/
+/*!*  @media (min-width: 768px) { .container-custom { max-width: 720px; }}*!*/
+/*!*  @media (min-width: 1024px) { .container-custom { max-width: 960px; }}*!*/
+/*!*  @media (min-width: 1280px) { .container-custom { max-width: 1140px; }}*!*/
+/*!*  @media (min-width: 1536px) { .container-custom { max-width: 1280px; }}*!*/
+
+/*!*  !* Section Padding *!*!*/
+/*!*  .section-padding { padding: 4rem 1rem; }*!*/
+/*!*  .section-padding-before { padding-top: 6rem; }*!*/
+/*!*  .section-padding-after { padding-bottom: 6rem; }*!*/
+
+/*!*  !* Text Styles *!*!*/
+/*!*  .section-title { @apply text-4xl md:text-5xl font-bold text-pakistan-green mb-4 font-heading; }*!*/
+/*!*  .section-subtitle { @apply text-lg md:text-xl text-pastel-green font-semibold mb-6; }*!*/
+/*!*  .section-copy { @apply text-base md:text-lg text-pakistan-green leading-relaxed; }*!*/
+
+/*!*  !* Buttons *!*!*/
+/*!*  .btn-primary {*!*/
+/*!*    @apply bg-pastel-green text-white py-3 px-6 rounded-md font-semibold transition shadow hover:bg-pakistan-green;*!*/
+/*!*  }*!*/
+/*!*  .btn-secondary {*!*/
+/*!*    @apply bg-transparent border border-pastel-green text-pastel-green py-3 px-6 rounded-md font-semibold transition hover:bg-pastel-green hover:text-white;*!*/
+/*!*  }*!*/
+
+/*!*  !* Shadows & Hover Effects *!*!*/
+/*!*  .shadow-soft { box-shadow: 0 4px 10px rgba(15, 66, 33, 0.1); }*!*/
+/*!*  .hover-lift {*!*/
+/*!*    transition: transform 0.3s ease, box-shadow 0.3s ease;*!*/
+/*!*  }*!*/
+/*!*  .hover-lift:hover {*!*/
+/*!*    transform: translateY(-6px);*!*/
+/*!*    box-shadow: 0 12px 20px rgba(15, 66, 33, 0.15);*!*/
+/*!*  }*!*/
+
+/*!*  !* Custom Backgrounds *!*!*/
+/*!*  .custom-bg {*!*/
+/*!*    background-color: var(--color-dark-green);*!*/
+/*!*    background-image:*!*/
+/*!*      url('/bg-drip.svg'),*!*/
+/*!*      linear-gradient(to bottom, var(--color-gold-accent), var(--color-gold-accent));*!*/
+/*!*    background-repeat: no-repeat;*!*/
+/*!*    background-position: top center;*!*/
+/*!*    background-size: 100% auto;*!*/
+/*!*  }*!*/
+
+/*!*  .theme-bg-light { background: var(--color-light-bg); }*!*/
+
+/*!*  !* Bob Animation *!*!*/
+/*!*  .bob {*!*/
+/*!*    animation: bob 3s ease-in-out infinite;*!*/
+/*!*    will-change: transform;*!*/
+/*!*  }*!*/
+
+/*!*  !* Tailwind Color Classes *!*!*/
+/*!*  .bg-pakistan-green { background-color: var(--color-pakistan-green); }*!*/
+/*!*  .text-pakistan-green { color: var(--color-pakistan-green); }*!*/
+/*!*  .bg-pastel-green { background-color: var(--color-pastel-green); }*!*/
+/*!*  .text-gold-accent { color: var(--color-gold-accent); }*!*/
+/*!*}*!*/

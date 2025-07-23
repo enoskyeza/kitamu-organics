@@ -7,7 +7,7 @@ import {FaShoppingCart, FaUserCircle} from "react-icons/fa";
 import Image from "next/image";
 
 const navItems = [
-    {label: 'Home', href: '/home'},
+    {label: 'Home', href: '/'},
     {label: 'About', href: '/about'},
     {label: 'Shop', href: '/shop'},
     {
@@ -20,8 +20,8 @@ const navItems = [
 ];
 export default function Navbar() {
     const pathname = usePathname();
-    console.log(pathname)
     const [scrolled, setScrolled] = useState(false);
+    const landing = pathname === '/';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -34,13 +34,16 @@ export default function Navbar() {
 
     return (
         <nav
-            className={clsx(
-                "fixed z-50 left-1/2 transform -translate-x-1/2 transition-all duration-500",
-                scrolled
-                    ? "top-0 w-full rounded-none bg-white shadow-md"
-                    : "top-4 w-[90%] rounded-2xl bg-white shadow-xl"
-            )}
+          className={clsx(
+            "z-50 ",
+            landing
+              ? scrolled
+                ? "fixed top-0 w-full rounded-none bg-white shadow-md left-1/2 transform -translate-x-1/2 transition-all duration-500"
+                : "absolute top-4 w-[90%] rounded-2xl bg-white shadow-xl left-1/2 transform -translate-x-1/2 transition-all duration-500"
+              : "sticky top-0 w-full rounded-none bg-white shadow-md"
+          )}
         >
+
             <div className="navbar container flex items-center justify-between px-6 py-3">
                 {/* Logo */}
                 <div className="navbar-start">

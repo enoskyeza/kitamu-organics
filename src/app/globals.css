@@ -183,7 +183,23 @@ body {
   }
 }
 
-{/* Add the following CSS in your global stylesheet: */}
+@keyframes scrollWheel {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
 
+.animate-scrollWheel {
+  animation: scrollWheel 1.5s infinite;
+}
 
 

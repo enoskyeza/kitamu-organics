@@ -72,6 +72,14 @@ export default function HeroSection() {
           </button>
         </div>
       </div>
+
+        {/* Mouse scroll indicator */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30">
+          <div className="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center relative">
+            <div className="w-1 h-2 bg-white rounded-full mt-2 animate-scrollWheel" />
+          </div>
+        </div>
+
     </section>
   );
 }

@@ -16,7 +16,7 @@ export default function ComingSoon() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col theme-bg-light p-6 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col theme-bg-light p-6 relative overflow-hidden" style={{background: 'white'}}>
 
 
       {/* Main content: full-center */}
@@ -27,7 +27,7 @@ export default function ComingSoon() {
               alt="Kitamu Organics Logo"
               width={180}
               height={100}
-              className=""
+              className="md:mt-45"
             />
         {/*<div className='w-full relative'>*/}
         {/*<Image*/}

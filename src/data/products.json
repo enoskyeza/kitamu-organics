@@ -1,0 +1,10 @@
+[
+  {"id":1,"name":"Raw Honey 1L","price":15000,"image":"/products/honey-jar.jpg","category":"honey"},
+  {"id":2,"name":"Raw Honey 20L","price":180000,"image":"/products/jerrycan.png","category":"honey"},
+  {"id":3,"name":"Shea Butter 500g","price":12050,"image":"/products/shea.png","category":"shea"},
+  {"id":4,"name":"Shea Butter 1kg","price":20000,"image":"/products/shea-butter.jpg","category":"shea"},
+  {"id":5,"name":"Kitamu Odii 250g","price":10000,"image":"/products/odii.png","category":"odii"},
+  {"id":6,"name":"Kitamu Odii Mix 500g","price":16000,"image":"/products/odii-mix.jpg","category":"odii"},
+  {"id":7,"name":"Lemongrass Oil 100ml","price":18000,"image":"/products/lemongrass-oil.jpg","category":"oil"},
+  {"id":8,"name":"Lemongrass Oil 50ml","price":10000,"image":"/products/lemongrass.png","category":"oil"}
+]

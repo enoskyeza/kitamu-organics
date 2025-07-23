@@ -5,6 +5,7 @@ import clsx from "clsx";
 import {usePathname} from "next/navigation";
 import {FaShoppingCart, FaUserCircle} from "react-icons/fa";
 import Image from "next/image";
+import {useCart} from "@/contexts/CartContext";
 
 const navItems = [
     {label: 'Home', href: '/'},
@@ -21,6 +22,10 @@ const navItems = [
 export default function Navbar() {
     const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
+    const {items, addItem, removeItem} = useCart();
+    const cartCount = items.reduce((s,i)=>s+i.quantity,0);
+    const total = items.reduce((s,i)=>s+i.price*i.quantity,0);
+    const [checkoutOpen, setCheckoutOpen] = useState(false);
     const landing = pathname === '/';
 
     useEffect(() => {
@@ -33,6 +38,7 @@ export default function Navbar() {
     }, []);
 
     return (
+        <div>
         <nav
           className={clsx(
             "z-50 ",
@@ -171,19 +177,31 @@ export default function Navbar() {
                                 {/*          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>*/}
                                 {/*</svg>*/}
                                 <FaShoppingCart className="text-green-700 hover:text-green-900 h-5 w-5 me-[8px]" />
-                                <span className="badge badge-sm indicator-item ms-2">0</span>
+                                <span className="badge badge-sm indicator-item ms-2">{cartCount}</span>
                             </div>
                         </div>
                         <div
                             tabIndex={0}
-                            className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
+                            className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-64 shadow">
                             <div className="card-body">
-                                <span className="text-sm font-light">No items in cart</span>
-                                {/*<span className="text-lg font-bold">8 Items</span>*/}
-                                {/*<span className="text-info">Subtotal: $999</span>*/}
-                                {/*<div className="card-actions">*/}
-                                {/*    <button className="btn btn-primary btn-block">View cart</button>*/}
-                                {/*</div>*/}
+                                {items.length === 0 ? (
+                                    <span className="text-sm font-light">No items in cart</span>
+                                ) : (
+                                    <>
+                                        <ul className="text-sm divide-y max-h-60 overflow-y-auto">
+                                            {items.map(it => (
+                                                <li key={it.id} className="flex justify-between py-1">
+                                                    <span>{it.name} x {it.quantity}</span>
+                                                    <button onClick={() => removeItem(it.id)} className="text-red-600 text-xs">remove</button>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <span className="text-sm font-medium">Subtotal: UGX {total.toLocaleString()}</span>
+                                        <div className="card-actions">
+                                            <button onClick={() => setCheckoutOpen(true)} className="btn btn-primary btn-block">Checkout</button>
+                                        </div>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -213,6 +231,20 @@ export default function Navbar() {
                 </div>
             </div>
         </nav>
+        {checkoutOpen && (
+            <div className="modal modal-open">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg mb-4">Payment Options</h3>
+                    <p className="mb-2"><span className="font-semibold">AirtelPay:</span> *185*9*2#</p>
+                    <p className="mb-2"><span className="font-semibold">Momo Pay:</span> *165*4*4#</p>
+                    <p className="mb-4"><span className="font-semibold">Call to Order:</span> <a href="tel:+256782976755" className="text-green-700">+256 782 976 755</a></p>
+                    <div className="modal-action">
+                        <button className="btn" onClick={() => setCheckoutOpen(false)}>Close</button>
+                    </div>
+                </div>
+            </div>
+        )
+        </div>
     );
 }
 

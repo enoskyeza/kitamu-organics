@@ -184,7 +184,7 @@ export default function Navbar() {
                               </span>
                             )}
                           </button>
-                          <CartDropdown isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+                          <CartDropdown isOpen={isCartOpen} onCloseAction={() => setIsCartOpen(false)} />
                         </div>
                         <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

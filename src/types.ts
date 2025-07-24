@@ -89,7 +89,7 @@ export interface OrderItem {
 
 export type OrderStatus = 'pending' | 'confirmed' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
 export type PaymentStatus = 'pending' | 'processing' | 'completed' | 'failed' | 'refunded';
-export type PaymentMethod = 'mtn_mobile_money' | 'airtel_money' | 'card' | 'paypal' | 'google_pay';
+export type PaymentMethod = 'mtn_mobile_money' | 'airtel_money' | 'card' | 'google_pay';
 
 export interface CheckoutData {
   email: string;
@@ -100,7 +100,7 @@ export interface CheckoutData {
     street: string;
     city: string;
     district: string;
-    country: string;
+    country?: string;
   };
   paymentMethod: PaymentMethod;
   mobileMoneyNumber?: string;

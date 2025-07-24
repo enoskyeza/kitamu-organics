@@ -21,7 +21,7 @@ const checkoutSchema = z.object({
     street: z.string().min(5, 'Street address is required'),
     city: z.string().min(2, 'City is required'),
     district: z.string().min(2, 'District is required'),
-    country: z.string().default('Uganda')
+    country: z.string().optional()
   }),
   paymentMethod: z.enum(['mtn_mobile_money', 'airtel_money', 'card', 'google_pay']),
   mobileMoneyNumber: z.string().optional()
@@ -47,11 +47,6 @@ const paymentMethods = [
     name: 'Credit/Debit Card',
     icon: <CreditCard className="w-5 h-5" />
   },
-  // {
-  //   id: 'paypal' as PaymentMethod,
-  //   name: 'PayPal',
-  //   icon: <span className="text-blue-600 font-bold text-sm">PP</span>
-  // },
   {
     id: 'google_pay' as PaymentMethod,
     name: 'Google Pay',

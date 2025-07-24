@@ -7,7 +7,6 @@ import {FaShoppingCart, FaUserCircle} from "react-icons/fa";
 import Image from "next/image";
 import {CartDropdown} from "@/components/cart/cart-dropdown";
 import {useCartStore} from "@/lib/store";
-import {ShoppingCart} from "lucide-react";
 
 const navItems = [
     {label: 'Home', href: '/'},

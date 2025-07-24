@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Star, ShoppingCart, Heart } from 'lucide-react';
+import {  ShoppingCart, Heart } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 import type { Product } from '@/types';
 import { toast } from 'react-hot-toast';
@@ -23,16 +23,16 @@ export function ProductCard({ product }: ProductCardProps) {
     toast.success(`${product.name} added to cart!`);
   };
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`w-4 h-4 ${
-          i < Math.floor(rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'
-        }`}
-      />
-    ));
-  };
+  // const renderStars = (rating: number) => {
+  //   return Array.from({ length: 5 }, (_, i) => (
+  //     <Star
+  //       key={i}
+  //       className={`w-4 h-4 ${
+  //         i < Math.floor(rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'
+  //       }`}
+  //     />
+  //   ));
+  // };
 
   return (
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group">

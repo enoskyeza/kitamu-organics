@@ -9,10 +9,10 @@ import { formatCurrency } from '@/lib/utils';
 
 interface CartDropdownProps {
   isOpen: boolean;
-  onClose: () => void;
+  onCloseAction: () => void;
 }
 
-export function CartDropdown({ isOpen, onClose }: CartDropdownProps) {
+export function CartDropdown({ isOpen, onCloseAction }: CartDropdownProps) {
   const { items, updateQuantity, removeItem, getCartTotal } = useCartStore();
 
   if (!isOpen) return null;
@@ -22,7 +22,7 @@ export function CartDropdown({ isOpen, onClose }: CartDropdownProps) {
       <div className="p-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold">Shopping Cart</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onCloseAction} className="text-gray-400 hover:text-gray-600">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -35,7 +35,7 @@ export function CartDropdown({ isOpen, onClose }: CartDropdownProps) {
             <p className="text-gray-500">Your cart is empty</p>
             <Link
               href="/shop"
-              onClick={onClose}
+              onClick={onCloseAction}
               className="inline-block mt-4 text-green-600 hover:text-green-700 font-medium"
             >
               Start Shopping
@@ -104,14 +104,14 @@ export function CartDropdown({ isOpen, onClose }: CartDropdownProps) {
               <div className="space-y-2">
                 <Link
                   href="/shop/cart"
-                  onClick={onClose}
+                  onClick={onCloseAction}
                   className="w-full bg-gray-100 text-gray-900 py-2 px-4 rounded-lg text-center font-medium hover:bg-gray-200 transition-colors block"
                 >
                   View Cart
                 </Link>
                 <Link
                   href="/shop/checkout"
-                  onClick={onClose}
+                  onClick={onCloseAction}
                   className="w-full bg-green-600 text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-green-700 transition-colors block"
                 >
                   Checkout

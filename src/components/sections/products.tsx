@@ -3,6 +3,7 @@
 import {useState} from 'react'
 import Image from 'next/image'
 import {FaChevronLeft, FaChevronRight, FaHeart, FaLeaf, FaShoppingCart} from 'react-icons/fa'
+import Link from "next/link";
 
 // Sample data (replace with real data or fetch from API)
 const saleBanners = [
@@ -101,11 +102,12 @@ export default function ProductsSection() {
                 ))}
             </div>
             <div className="flex items-center justify-center w-full pt-4 mt-2">
-            <button
+            <Link
+                href={"/shop"}
                 className="mt-4  px-4 thm-bg-primary
                 text-white py-2 rounded-lg font-medium hover:opacity-90 transition cursor-pointer">
                 Explore more Products
-            </button>
+            </Link>
             </div>
         </section>
     )

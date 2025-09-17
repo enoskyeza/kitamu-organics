@@ -58,10 +58,10 @@ export default function HeroSection() {
       {/* Hero Content */}
       <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-4 sm:px-8 md:px-16">
         <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
-          Nature-Based Beekeeping for Regeneration
+          Improving Our Ecosystem Through Beekeeping
         </h1>
         <p className="mt-4 text-lg sm:text-xl text-white/90 max-w-2xl">
-          Serving 1,000+ households with eco-friendly livelihoods in Northern Uganda.
+          We use sustainable bee farming to regenerate nature and livelihoods in Northern Uganda and beyond.
         </p>
         <div className="mt-6 flex gap-4">
           <button className="bg-yellow-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition">

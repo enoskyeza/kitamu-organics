@@ -5,10 +5,10 @@ import CountUp from 'react-countup'
 
 export default function AboutSection() {
     const stats = [
-        {end: 400, label: 'Partnered Farmers'},
+        {end: 4000, label: 'Partnered Farmers'},
         {end: 8, label: 'Natural Products'},
-        {end: 10, label: 'Years of Impact'},
-        {end: 30, label: 'Districts Served'},
+        {end: 4, label: 'Years of Impact'},
+        {end: 50, label: 'Districts Served'},
     ]
 
     return (
@@ -36,11 +36,14 @@ export default function AboutSection() {
                               <span className="text-white uppercase tracking-wide">About Us</span>
                             </span>
 
-                            <h2 className="thm-section-title text-white font-bold">Good Nature For You</h2>
+                            <h2 className="thm-section-title text-white font-bold">Rooted in Nature, Growing with Community.</h2>
 
                             <p className="text-lg text-gray-200">
-                                Kitamu Natural Organics champions nature-based beekeeping and Farmer-Managed Natural
-                                Regeneration to revitalize land and livelihoods in Northern Uganda.
+                                Kitamu Natural Organics is a Ugandan agribusiness born in Kitgum, Northern Uganda.
+                                We believe authentic, organic products can transform communities. From raw honey to
+                                cold-pressed shea butter, everything we offer comes straight from our own beehives and
+                                local farms. By training farmers and planting trees, we’re improving lives and restoring
+                                the environment – one jar at a time.
                             </p>
 
                             <div className="flex flex-wrap gap-8 pt-4">

@@ -33,7 +33,8 @@ export interface NutritionalInfo {
   carbs: number;
   fat: number;
   fiber: number;
-  vitamins: string[];
+  sugar: number;
+  vitamins?: string[];
 }
 
 export interface CartItem {

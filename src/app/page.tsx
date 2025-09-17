@@ -5,7 +5,6 @@ import AboutSection from "@/components/sections/about";
 import ServicesSection from "@/components/sections/services";
 import VideoStorySection from "@/components/sections/project";
 import ProductsSection from "@/components/sections/products";
-import TeamSection from "@/components/sections/team";
 import Gallery from "@/components/sections/gallery";
 
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
         <ServicesSection />
         <VideoStorySection />
         <ProductsSection />
-        <TeamSection />
         <Gallery />
       {/*<ComingSoon />*/}
     </>

@@ -12,6 +12,10 @@
   --foreground: #171717;
 
   /* Brand Colors */
+
+  --brand-primary: #0F5132;
+  --brand-accent: #F59E0B;
+  --brand-primary-light: #198754;
   --color-primary: #0F4221;       /* Dark Forest Green */
   --color-secondary: #BFA225;     /* Gold Accent */
   --color-success: #38B549;       /* Pastel Green */
@@ -66,6 +70,15 @@ body {
   .thm-bg-primary     { background-color: var(--color-primary); }
   .thm-border-primary { border-color: var(--color-primary); }
 
+  .thm-text-primary-light   { color: var(--brand-primary-light); }
+  .thm-bg-primary-light     { background-color: var(--brand-primary-light); }
+  .thm-border-primary-light { border-color: var(--brand-primary-light); }
+
+
+  .thm-text-accent   { color: var(--brand-accent); }
+  .thm-bg-accent     { background-color: var(--brand-accent); }
+  .thm-border-accent { border-color: var(--brand-accent); }
+
   .thm-text-secondary   { color: var(--color-secondary); }
   .thm-bg-secondary     { background-color: var(--color-secondary); }
   .thm-border-secondary { border-color: var(--color-secondary); }
@@ -113,6 +126,16 @@ body {
   }
 
   /* --- Typography Styles --- */
+  .thm-page-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    /*color: var(--color-primary);*/
+    margin-bottom: 1rem;
+  }
+
+    /* --- Typography Styles --- */
   .thm-section-title {
     font-family: var(--font-heading);
     font-size: 2rem;

@@ -115,7 +115,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </div>
           </div>
 
-          <button onClick={handleAddToCart} className="btn btn-sm mt-2 thm-bg-primary text-white">Add to cart</button>
+          <button onClick={handleAddToCart} className="btn btn-sm mt-2 thm-bg-secondary text-white">Add to cart</button>
 
           {/* Origin */}
           {/*<div className="mt-2">*/}

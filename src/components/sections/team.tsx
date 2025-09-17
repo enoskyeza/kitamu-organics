@@ -7,16 +7,16 @@ const teamMembers = [
     {
         name: "Wycliff Odong",
         position: "Founder & CEO",
-        image: "/team/odong.jpg",
+        image: "/team/wyclif.jpeg",
     },
     {
         name: "Achiro Nancy Hope",
-        position: "Sales Lead",
+        position: "Sales Lead - Kitgum",
         image: "/team/achiro.jpg",
     },
     {
-        name: "Simon Peter",
-        position: "Operations Manager",
+        name: "Paul",
+        position: "Sales Lead - Kisaasi",
         image: "/team/peter.jpg",
     },
 ];
@@ -43,9 +43,9 @@ const TeamSection = () => {
                                 <Image
                                     src={member.image}
                                     alt={member.name}
-                                    width={100}
-                                    height={95}
-                                    className="w-full h-90 object-cover mb-2"
+                                    width={400}
+                                    height={400}
+                                    className="w-full h-80 object-cover mb-2"
                                 />
                             </figure>
 

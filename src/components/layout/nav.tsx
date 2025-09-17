@@ -11,11 +11,13 @@ import {useCartStore} from "@/lib/store";
 const navItems = [
     {label: 'Home', href: '/'},
     {label: 'About', href: '/about'},
+    {label: 'Gallery', href: '/gallery'},
     {label: 'Shop', href: '/shop'},
     {
         label: 'Projects', href: '/projects', subItems: [
             {label: 'Beekeeping', href: '/projects/beekeeping'},
             {label: 'FMNR', href: '/projects/fmnr'},
+            {label: 'Services', href: '/projects/services'},
         ]
     },
     {label: 'Contact', href: '/contact'},
@@ -119,7 +121,7 @@ export default function Navbar() {
                             className="me-3"
                         />
                         <div className="hidden xs:flex md:hidden lg:flex gap-1.5 text-xl font-bold text-green-800">
-                            Kitamu <span className="hidden xl:inline-flex">Organics Limited</span>
+                            Kitamu <span className="hidden xl:inline-flex">Natural Organics</span>
                         </div>
                     </div>
 

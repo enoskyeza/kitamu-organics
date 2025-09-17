@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import Image from 'next/image';
 import PageHeader from "@/components/sections/PageHeader";
 
 type Category =
@@ -42,13 +43,19 @@ function GDriveImg({
   const [i, setI] = React.useState(0);
   const urls = React.useMemo(() => srcCandidates(id, size), [id, size]);
 
+  // Provide a reasonable intrinsic size for optimization; layout will scale via CSS
+  const width = size;
+  const height = Math.round(size * 0.66);
+
   return (
-    <img
+    <Image
       src={urls[i]}
       alt={alt}
-      loading="lazy"
+      width={width}
+      height={height}
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       referrerPolicy="no-referrer"
-      onError={() => setI(v => (v + 1 < urls.length ? v + 1 : v))}
+      onError={() => setI((v) => (v + 1 < urls.length ? v + 1 : v))}
       className={className}
     />
   );

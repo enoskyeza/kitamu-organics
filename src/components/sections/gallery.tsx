@@ -1,5 +1,6 @@
 // src/components/GallerySection.tsx
 import React from "react";
+import Image from "next/image";
 import {FaLeaf} from "react-icons/fa";
 
 const images = [
@@ -29,12 +30,17 @@ const GallerySection = () => {
 
         <div className="columns-2 md:columns-3 gap-4 space-y-4">
           {images.map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt={`Gallery ${i + 1}`}
-              className="rounded-lg w-full object-cover hover:scale-105 transition-transform duration-300"
-            />
+            <div key={i} className="overflow-hidden rounded-lg">
+              <Image
+                src={src}
+                alt={`Gallery ${i + 1}`}
+                width={800}
+                height={600}
+                className="rounded-lg w-full h-auto object-cover hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                priority={i < 3}
+              />
+            </div>
           ))}
         </div>
         <button className="mt-8 bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800 transition">

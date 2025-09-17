@@ -42,7 +42,7 @@ export default function BeekeepingExpansionPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-600 mb-8">
-              We're on a mission to spread the art of beekeeping across Northern Uganda. Through the Beekeeping Expansion project,
+              We&apos;re on a mission to spread the art of beekeeping across Northern Uganda. Through the Beekeeping Expansion project,
               we train local farmers (men and women alike) in modern hive management and provide them with starter hives.
             </p>
 
@@ -95,7 +95,7 @@ export default function BeekeepingExpansionPage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Impact</h2>
               <p className="text-gray-700 mb-6">
                 By growing our apiary network village by village, we create new income streams for families and increase
-                pollination for crops. This project isn't just about producing more honey – it's about building self-reliance
+                pollination for crops. This project isn&apos;t just about producing more honey – it&apos;s about building self-reliance
                 and a buzzing community of beekeepers who protect the environment.
               </p>
 

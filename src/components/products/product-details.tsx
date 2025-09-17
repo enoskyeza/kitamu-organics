@@ -151,7 +151,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                   <span>{product.nutritionalInfo.fiber}g</span>
                 </div>
               </div>
-              {product.nutritionalInfo.vitamins.length > 0 && (
+              {Array.isArray(product.nutritionalInfo.vitamins) && product.nutritionalInfo.vitamins.length > 0 && (
                 <div className="mt-3">
                   <span className="text-sm font-medium">Rich in: </span>
                   <span className="text-sm">{product.nutritionalInfo.vitamins.join(', ')}</span>

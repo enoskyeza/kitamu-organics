@@ -3,12 +3,14 @@ import React from "react";
 const VideoStorySection = () => {
   return (
     <section className="bg-[#1a3e2a] text-white py-16 px-4 relative">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+      <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center">
         <div>
           <h2 className="thm-section-title font-bold mb-4">Real Impact. Real People.</h2>
           <p className="text-lg mb-6">
-            Meet our farmers who are transforming their communities through sustainable
-            beekeeping and organic farming. Their stories are what drive our mission forward.
+            We currently support over 4,00 local households in beekeeping and agroforestry, from Kitgum to Gulu.
+            By choosing Kitamu, you’re empowering Ugandan farmers, creating jobs, and helping regenerate our land.
+            Our bees don’t just make honey – they pollinate crops and bring life back to barren fields.
+            Together, we’re building a sweeter, greener future for Uganda. See Our Projects
           </p>
           <button className="bg-yellow-600 text-white px-6 py-2 rounded hover:bg-yellow-500 transition">
             Explore More Stories

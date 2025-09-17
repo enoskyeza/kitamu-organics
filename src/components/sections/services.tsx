@@ -59,11 +59,11 @@ export default function ServicesSection() {
                 }
               >
                 {svc.featured && (
-                  <div className="absolute w-full inset-x-0 sm:inset-x-0 lg:inset-x-0 -top-0 h-[calc(100%)]
+                  <div className="mt-4 md:mt-0 absolute w-full inset-x-0 sm:inset-x-0 lg:inset-x-0 -top-0 h-[calc(100%)]
                   md:-top-8 md:h-[calc(100%+2rem)] bg-primary rounded-[28px] z-0" />
                 )}
 
-                <div className="relative z-10 w-full flex flex-col items-center justify-between">
+                <div className="mt-4 md:mt-0 relative z-10 w-full flex flex-col items-center justify-between">
                   <div className="mb-4">
                     {svc.icon}
                   </div>

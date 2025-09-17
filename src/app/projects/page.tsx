@@ -44,8 +44,8 @@ export default function ProjectsPage() {
             Our Community Projects
           </h1>
           <p className="text-xl text-gray-600">
-            At Kitamu, our work goes beyond products – it's about projects that uplift communities and heal the land. 
-            Here's what we're actively working on:
+            At Kitamu, our work goes beyond products – it&apos;s about projects that uplift communities and heal the land. 
+            Here&apos;s what we&apos;re actively working on:
           </p>
         </div>
       </section>

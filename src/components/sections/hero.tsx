@@ -11,8 +11,9 @@ export default function HeroSection() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && videoRef.current && !isVideoLoaded) {
-            videoRef.current.play();
+          if (entry.isIntersecting && !isVideoLoaded) {
+            const el = entry.target as HTMLVideoElement;
+            el.play?.();
             setIsVideoLoaded(true);
           }
         });
@@ -20,10 +21,11 @@ export default function HeroSection() {
       { threshold: 0.5 }
     );
 
-    if (videoRef.current) observer.observe(videoRef.current);
+    const el = videoRef.current;
+    if (el) observer.observe(el);
 
     return () => {
-      if (videoRef.current) observer.unobserve(videoRef.current);
+      if (el) observer.unobserve(el);
     };
   }, [isVideoLoaded]);
 

@@ -45,7 +45,7 @@ export default function NaturalProductManufacturingPage() {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">From Hive to Jar</h3>
                   <p className="text-gray-600 mb-4">
-                    "From hive to jar" means we preserve purity at every step: no chemicals, no shortcuts, 
+                    &quot;From hive to jar&quot; means we preserve purity at every step: no chemicals, no shortcuts, 
                     just farm-fresh ingredients transformed with modern food-safe techniques.
                   </p>
                   <div className="space-y-3">
@@ -131,7 +131,7 @@ export default function NaturalProductManufacturingPage() {
               </div>
               
               <p className="text-gray-700 mt-6">
-                We're also innovating new products like Kitamu Honey Wine and infused oils, showcasing the richness 
+                We&apos;re also innovating new products like Kitamu Honey Wine and infused oils, showcasing the richness 
                 of our region. When you see the Kitamu label, you know it was made with care in Northern Uganda.
               </p>
             </div>

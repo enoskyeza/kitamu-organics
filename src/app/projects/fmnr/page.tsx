@@ -24,7 +24,7 @@ export default function FMNRPage() {
               <h2 className="text-2xl font-bold text-gray-900 mb-6">What is FMNR?</h2>
               <p className="text-gray-700 mb-6">
                 Instead of planting new trees, farmers protect and nurture wild tree stumps and seedlings that sprout naturally 
-                in their fields. This approach works with nature's own regenerative power to restore degraded landscapes.
+                in their fields. This approach works with nature&apos;s own regenerative power to restore degraded landscapes.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -166,7 +166,7 @@ export default function FMNRPage() {
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Restoring Hope</h2>
                   <p className="text-gray-700">
                     This project is restoring hope along with forests – farmers see that they can heal their land with the tools 
-                    they already have. It's truly a win-win for people and nature. The transformation from degraded land to 
+                    they already have. It&apos;s truly a win-win for people and nature. The transformation from degraded land to 
                     productive agroforest gives communities a sense of pride and environmental stewardship.
                   </p>
                 </div>

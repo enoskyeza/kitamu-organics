@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { GraduationCap, Handshake, Droplets, Car as Jar, Leaf, Sparkles } from 'lucide-react';
 import PageHeader from "@/components/sections/PageHeader";
 

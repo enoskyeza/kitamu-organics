@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import WhatsappChatButton from "@/components/utils/WhatsappChat";
 
 export default function ContactPage() {
@@ -89,7 +89,7 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <p className="text-xl text-green-100 mb-8">
-            Get in touch with Kitamu Natural Organics. We're here to help with your beekeeping journey,
+            Get in touch with Kitamu Natural Organics. We&apos;re here to help with your beekeeping journey,
             product inquiries, and partnership opportunities.
           </p>
         </div>
@@ -102,7 +102,7 @@ export default function ContactPage() {
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-green-800 mb-4">Send Us a Message</h2>
               <p className="text-gray-600">
-                Have questions about our products or services? We'd love to hear from you.
+                Have questions about our products or services? We&apos;d love to hear from you.
               </p>
             </div>
 

@@ -39,11 +39,11 @@ export default function BeekeepingExpansionPage() {
       {/* Main Content */}
       <section className="py-16">
         <div className="container">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-600 mb-8">
               We&apos;re on a mission to spread the art of beekeeping across Northern Uganda. Through the Beekeeping Expansion project,
-              we train local farmers (men and women alike) in modern hive management and provide them with starter hives.
+              we train local farmers (men and women alike), youth and middle income earners in intergrated farming and provide them with starter hives at subsidized costs.
             </p>
 
             <div className="bg-white rounded-2xl p-8 shadow-lg mb-12">
@@ -99,10 +99,14 @@ export default function BeekeepingExpansionPage() {
                 and a buzzing community of beekeepers who protect the environment.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-green-600 mb-2">4,000+</div>
-                  <div className="text-gray-600">Farmers Trained</div>
+                  <div className="text-gray-600">Jobs created</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-purple-600 mb-2">1600+</div>
+                  <div className="text-gray-600"> Arces of degraded land regenerated</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-blue-600 mb-2">50+</div>

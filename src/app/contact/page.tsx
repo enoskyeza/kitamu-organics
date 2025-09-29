@@ -43,12 +43,12 @@ export default function ContactPage() {
       // This branch is not yet live; we use the centre of Gulu town
       name: 'Kitamu Natural Organics–Gulu',
       label: 'Gulu',
-      address: 'Gulu Town, Northern Uganda (coming soon)',
+      address: 'Gulu Town, Northern Uganda',
       phone: '+256772123457',
       email: 'gulu@kitamu.co.ug',
       hours: 'Mon‑Fri: 8:00AM–5:00PM, Sat: 9:00AM–2:00PM',
       coordinates: { lat: 2.78167, lng: 32.29917 },
-      description: 'Regional training centre and distribution hub (coming soon)',
+      description: 'Regional training centre and distribution hub)',
       directions: 'https://maps.app.goo.gl/n1uDn6DgU33KiipBA'
     },
   } as const;

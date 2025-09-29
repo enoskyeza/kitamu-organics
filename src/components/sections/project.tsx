@@ -7,7 +7,7 @@ const VideoStorySection = () => {
         <div>
           <h2 className="thm-section-title font-bold mb-4">Real Impact. Real People.</h2>
           <p className="text-lg mb-6">
-            We currently support over 4,00 local households in beekeeping and agroforestry, from Kitgum to Gulu.
+            We currently support over 4,000 local households in beekeeping and agroforestry, from Kitgum to Gulu.
             By choosing Kitamu, you’re empowering Ugandan farmers, creating jobs, and helping regenerate our land.
             Our bees don’t just make honey – they pollinate crops and bring life back to barren fields.
             Together, we’re building a sweeter, greener future for Uganda. See Our Projects

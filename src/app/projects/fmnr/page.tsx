@@ -16,8 +16,8 @@ export default function FMNRPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-600 mb-8">
-              Our commitment to sustainability shines in our FMNR project, where we team up with local farmers to bring back 
-              trees and life to degraded lands. Farmer-Managed Natural Regeneration (FMNR) is a simple but powerful practice.
+              Our commitment to sustainability shines in our Farmer-Managed Natural Regeneration (FMNR) project, where we team up with local farmers to bring back 
+              trees and life to degraded lands. FMNR is a simple but powerful practice.
             </p>
 
             <div className="bg-white rounded-2xl p-8 shadow-lg mb-12">

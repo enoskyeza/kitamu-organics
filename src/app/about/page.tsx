@@ -1,7 +1,7 @@
 // My current about
 import Link from 'next/link';
 
-import { Heart, Users, Award, Leaf,} from 'lucide-react';
+import { Heart, Users, Award, Leaf, Group, Clock, Smile} from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from "next/image";
 import PageHeader from "@/components/sections/PageHeader";
@@ -10,23 +10,45 @@ const values = [
   {
     icon: <Heart className="h-8 w-8 text-brand-primary" />,
     title: "Community First",
-    description: "We believe in putting the community at the center of everything we do, ensuring that our initiatives benefit local people directly."
+    description:
+      "We believe in putting the community at the center of everything we do, ensuring that our initiatives benefit local people directly.",
   },
   {
     icon: <Leaf className="h-8 w-8 text-brand-accent" />,
     title: "Environmental Stewardship",
-    description: "Our commitment to sustainable practices ensures that our beekeeping activities contribute to environmental conservation and biodiversity."
+    description:
+      "Our commitment to sustainable practices ensures that our beekeeping activities contribute to environmental conservation and biodiversity.",
   },
   {
     icon: <Award className="h-8 w-8 text-brand-primary" />,
     title: "Quality Excellence",
-    description: "We maintain the highest standards in honey production, processing, and community training to ensure exceptional quality in everything we do."
+    description:
+      "We maintain the highest standards in honey production, processing, and community training to ensure exceptional quality in everything we do.",
+  },
+  {
+    icon: <Group className="h-8 w-8 text-brand-primary" />,
+    title: "Empowerment Through Education",
+    description:
+      "We believe that knowledge transfer and skills development are key to creating lasting change in rural communities.",
   },
   {
     icon: <Users className="h-8 w-8 text-brand-accent" />,
-    title: "Empowerment Through Education",
-    description: "We believe that knowledge transfer and skills development are key to creating lasting change in rural communities."
-  }
+    title: "Team Work",
+    description:
+      "Like the bees, we believe that when we work together as a team, everyone achieves more.",
+  },
+  {
+    icon: <Clock className="h-8 w-8 text-brand-accent" />,
+    title: "Time Management",
+    description:
+      "We value the optimal use of time and seasons for increased productivity.",
+  },
+  {
+    icon: <Smile className="h-8 w-8 text-brand-primary" />,
+    title: "Customer Experience",
+    description:
+      "We believe that the first product we serve is customer experience—the warm one served with a smile.",
+  },
 ];
 
 const teamMembers = [
@@ -88,8 +110,9 @@ export default function AboutPage() {
               </p>
 
               <p className="text-gray-700 leading-relaxed mb-6">
-                Today, we work with over 800 trained beekeepers across five districts, operate a
-                modern honey processing facility, and have established partnerships with government
+                Today, we run two beekeeping training centers showcasing the nexus between traditional and modern beekeeping 
+                for natural regeneration. while working with over 8000 trained beekeepers across five districts, operating a
+                modern honey processing facility, and partnering with government
                 agencies, NGOs, and private sector organizations. Our integrated approach combines
                 technical training, quality processing, fair trade practices, and environmental
                 conservation to create sustainable impact.
@@ -117,9 +140,7 @@ export default function AboutPage() {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-lg leading-relaxed">
-                    To empower rural communities in Northern Uganda through sustainable beekeeping
-                    practices, quality honey production, and comprehensive training programs that
-                    create lasting economic opportunities while promoting environmental conservation.
+                  To use beekeeping to provide competitive, quality, adaptive and affordable solutions while putting Local Economic Development at the centre of our services.
                   </p>
                 </CardContent>
               </Card>
@@ -130,9 +151,7 @@ export default function AboutPage() {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-lg leading-relaxed">
-                    To be the leading force in transforming rural livelihoods across Northern Uganda,
-                    creating a thriving beekeeping sector that provides sustainable income, promotes
-                    biodiversity, and serves as a model for rural development across East Africa.
+                  To be a leader in catalyzing Local Economic Development in Uganda.
                   </p>
                 </CardContent>
               </Card>

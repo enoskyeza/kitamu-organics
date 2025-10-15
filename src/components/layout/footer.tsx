@@ -80,7 +80,7 @@ export default function Footer() {
             <h3 className="font-bold text-xl mb-2">Contact</h3>
             <ul className="text-sm space-y-1">
               <li>Kitamu Natural Organics Ltd.</li>
-              <li>P.O. Box 123, Kitgum, Uganda</li>
+              <li>P.O. Box 350148, Kitgum, Uganda</li>
               <li><Link href="mailto:info@kitamunaturalorganics.com" className="hover:text-white">info@kitamunaturalorganics.com</Link></li>
               <li><Link href="tel:+256782976755" className="hover:text-white">+256 782 976 755</Link></li>
             </ul>

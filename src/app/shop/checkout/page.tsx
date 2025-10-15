@@ -1,3 +1,4 @@
+
 'use client';
 
 export const dynamic = 'force-dynamic';
@@ -7,114 +8,94 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { CheckCircle, CreditCard, Smartphone, ArrowLeft, ArrowRight } from 'lucide-react';
-import { useCartStore, useCheckoutStore } from '@/lib/store';
-import { formatCurrency, calculateTax, calculateShipping, generateOrderId, validatePhoneNumber } from '@/lib/utils';
+import { CheckCircle, Smartphone, ArrowLeft, ArrowRight, MessageCircle } from 'lucide-react';
+import { useCartStore } from '@/lib/store';
+import { formatCurrency, generateOrderId, validatePhoneNumber } from '@/lib/utils';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { toast } from 'react-hot-toast';
-import type { PaymentMethod } from '@/types';
 
 const checkoutSchema = z.object({
-  email: z.string().email('Please enter a valid email address'),
+  email: z.string().email('Please enter a valid email address').optional().or(z.literal('')),
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
   lastName: z.string().min(2, 'Last name must be at least 2 characters'),
   phone: z.string().refine(validatePhoneNumber, 'Please enter a valid Uganda phone number'),
   address: z.object({
-    street: z.string().min(5, 'Street address is required'),
-    city: z.string().min(2, 'City is required'),
-    district: z.string().min(2, 'District is required'),
-    country: z.string().optional()
+    street: z.string().optional().or(z.literal('')),
+    city: z.string().optional().or(z.literal('')),
+    district: z.string().optional().or(z.literal('')),
+    country: z.string().optional(),
   }),
-  paymentMethod: z.enum(['mtn_mobile_money', 'airtel_money', 'card', 'google_pay']),
-  mobileMoneyNumber: z.string().optional()
 });
 
 type CheckoutFormData = z.infer<typeof checkoutSchema>;
 
-const paymentMethods = [
-  {
-    id: 'mtn_mobile_money' as PaymentMethod,
-    name: 'MTN Mobile Money',
-    icon: <Smartphone className="w-5 h-5" />,
-    popular: true
-  },
-  {
-    id: 'airtel_money' as PaymentMethod,
-    name: 'Airtel Money',
-    icon: <Smartphone className="w-5 h-5" />,
-    popular: true
-  },
-  {
-    id: 'card' as PaymentMethod,
-    name: 'Credit/Debit Card',
-    icon: <CreditCard className="w-5 h-5" />
-  },
-  {
-    id: 'google_pay' as PaymentMethod,
-    name: 'Google Pay',
-    icon: <span className="text-blue-500 font-bold text-sm">G</span>
-  }
-];
-
 export default function CheckoutPage() {
   const router = useRouter();
-  const { items, getCartTotal, clearCart } = useCartStore();
-  const { checkoutData, updateCheckoutData, resetCheckout } = useCheckoutStore();
+  const { items, getCartTotal } = useCartStore();
   const [isProcessing, setIsProcessing] = useState(false);
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-    // setValue
   } = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutSchema),
-    defaultValues: checkoutData
   });
 
-  const watchedPaymentMethod = watch('paymentMethod');
   const subtotal = getCartTotal();
-  const tax = calculateTax(subtotal);
-  const shipping = calculateShipping(subtotal, watch('address.district'));
-  const total = subtotal + tax + shipping;
+  const shipping = 0; // delivery is zero
+  const total = subtotal + shipping; // no tax
 
   if (items.length === 0) {
-    router.push('/cart');
+    router.push('/shop/cart');
     return null;
   }
 
   const onSubmit = async (data: CheckoutFormData) => {
     setIsProcessing(true);
-    
+
     try {
-      // Update checkout data
-      updateCheckoutData(data);
-
-      // Simulate payment processing
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // Generate order
       const orderId = generateOrderId();
-      
-      // Clear cart and checkout data
-      clearCart();
-      resetCheckout();
 
-      // Show success message
-      toast.success('Order placed successfully!');
+      const itemsText = items
+        .map(
+          (item) =>
+            `- ${item.product.name} x ${item.quantity} = ${formatCurrency(
+              item.product.price * item.quantity
+            )}`
+        )
+        .join('\n');
 
-      // Redirect to success page
-      router.push(`/checkout/success?orderId=${orderId}`);
+      const addressParts = [data.address?.street, data.address?.city, data.address?.district]
+        .filter(Boolean)
+        .join(', ');
+
+      const message =
+        `New Order Request (MTN Merchant)\n\n` +
+        `Order ID: ${orderId}\n` +
+        `Customer: ${data.firstName} ${data.lastName}\n` +
+        `Phone: ${data.phone}\n` +
+        (data.email ? `Email: ${data.email}\n` : '') +
+        (addressParts ? `Delivery Address: ${addressParts}\n` : '') +
+        `\nItems:\n${itemsText}\n\n` +
+        `Subtotal: ${formatCurrency(subtotal)}\n` +
+        `Delivery: ${formatCurrency(shipping)}\n` +
+        `Total: ${formatCurrency(total)}\n\n` +
+        `Payment Instructions: Pay to 665095 by dialing *165*3#\n` +
+        `After payment, reply with your Transaction ID.`;
+
+      const waNumber = '256751092016';
+      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
+
+      toast.success('Opening WhatsApp with your order details...');
     } catch (error) {
       console.error(error);
-      toast.error('Payment failed. Please try again.');
+      toast.error('Could not open WhatsApp. Please try again.');
     } finally {
       setIsProcessing(false);
     }
   };
-
-  const isMobileMoneyPayment = watchedPaymentMethod === 'mtn_mobile_money' || watchedPaymentMethod === 'airtel_money';
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -135,14 +116,10 @@ export default function CheckoutPage() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             {/* Contact Information */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">
-                Contact Information
-              </h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Contact Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    First Name *
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
                   <input
                     {...register('firstName')}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
@@ -152,9 +129,7 @@ export default function CheckoutPage() {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Last Name *
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
                   <input
                     {...register('lastName')}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
@@ -165,151 +140,79 @@ export default function CheckoutPage() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email *
+                    Email (optional)
                   </label>
                   <input
                     type="email"
                     {...register('email')}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-                  )}
+                  {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
                   <input
                     type="tel"
                     placeholder="+256 700 000 000"
                     {...register('phone')}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   />
-                  {errors.phone && (
-                    <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
-                  )}
+                  {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>}
                 </div>
               </div>
             </div>
 
-            {/* Shipping Address */}
+            {/* Delivery Address */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">
-                Shipping Address
-              </h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Delivery Address (optional)</h2>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Street Address *
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Street Address</label>
                   <input
                     {...register('address.street')}
                     placeholder="Enter your full address"
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   />
-                  {errors.address?.street && (
-                    <p className="mt-1 text-sm text-red-600">{errors.address.street.message}</p>
-                  )}
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      City *
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">City</label>
                     <input
                       {...register('address.city')}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     />
-                    {errors.address?.city && (
-                      <p className="mt-1 text-sm text-red-600">{errors.address.city.message}</p>
-                    )}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      District *
-                    </label>
-                    <select
+                    <label className="block text-sm font-medium text-gray-700 mb-2">District</label>
+                    <input
                       {...register('address.district')}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    >
-                      <option value="">Select District</option>
-                      <option value="kampala">Kampala</option>
-                      <option value="wakiso">Wakiso</option>
-                      <option value="mukono">Mukono</option>
-                      <option value="entebbe">Entebbe</option>
-                      <option value="jinja">Jinja</option>
-                    </select>
-                    {errors.address?.district && (
-                      <p className="mt-1 text-sm text-red-600">{errors.address.district.message}</p>
-                    )}
+                    />
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Payment Method */}
+            {/* Payment - MTN Merchant Code */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">
-                Payment Method
-              </h2>
-              <div className="space-y-3">
-                {paymentMethods.map((method) => (
-                  <label
-                    key={method.id}
-                    className={`flex items-center p-4 border  rounded-lg cursor-pointer transition-colors ${
-                      watchedPaymentMethod === method.id
-                        ? 'border-green-500 bg-green-50'
-                        : 'border-gray-200 hover:bg-gray-50'
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      value={method.id}
-                      {...register('paymentMethod')}
-                      className="sr-only"
-                    />
-                    <div className="flex items-center justify-between w-full">
-                      <div className="flex items-center space-x-3">
-                        {method.icon}
-                        <span className="font-medium">{method.name}</span>
-                        {method.popular && (
-                          <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-                            Popular
-                          </span>
-                        )}
-                      </div>
-                      <div className={`w-4 h-4 rounded-full border-2 ${
-                        watchedPaymentMethod === method.id
-                          ? 'border-green-500 bg-green-500'
-                          : 'border-gray-300'
-                      }`}>
-                        {watchedPaymentMethod === method.id && (
-                          <div className="w-full h-full rounded-full bg-white scale-50"></div>
-                        )}
-                      </div>
-                    </div>
-                  </label>
-                ))}
-              </div>
-
-              {/* Mobile Money Number Input */}
-              {isMobileMoneyPayment && (
-                <div className="mt-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Mobile Money Number *
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="+256 700 000 000"
-                    {...register('mobileMoneyNumber')}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  />
-                  <p className="mt-1 text-sm text-gray-500">
-                    You will receive a payment prompt on this number
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Payment (MTN Merchant Code)</h2>
+              <div className="flex items-start p-4 border rounded-lg bg-green-50">
+                <Smartphone className="w-5 h-5 text-green-600 mt-0.5 mr-3" />
+                <div>
+                  <p className="font-medium">MTN Merchant Code</p>
+                  <p className="text-sm text-gray-700 mt-1">
+                    Pay to <span className="font-semibold">665095</span> by dialing{' '}
+                    <span className="font-semibold">*165*3#</span>
+                  </p>
+                  <p className="text-sm text-gray-600 mt-2">
+                    Steps: Dial *165*3# → Merchant Code → Enter 665095 → Amount → Confirm
+                  </p>
+                  <p className="text-sm text-gray-600 mt-2">
+                    After payment, click &quot;Place Order&quot; below. We&apos;ll message you on WhatsApp to collect your
+                    Transaction ID and arrange delivery.
                   </p>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* Place Order Button */}
@@ -336,9 +239,7 @@ export default function CheckoutPage() {
         {/* Order Summary */}
         <div className="lg:col-span-1">
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Order Summary
-            </h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Order Summary</h2>
 
             {/* Items */}
             <div className="space-y-3 mb-6">
@@ -348,9 +249,7 @@ export default function CheckoutPage() {
                     <span className="text-sm font-medium">{item.quantity}</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-medium text-gray-900 truncate">
-                      {item.product.name}
-                    </h4>
+                    <h4 className="text-sm font-medium text-gray-900 truncate">{item.product.name}</h4>
                     <p className="text-sm text-gray-500">
                       {formatCurrency(item.product.price)} × {item.quantity}
                     </p>
@@ -369,14 +268,8 @@ export default function CheckoutPage() {
                 <span className="font-medium">{formatCurrency(subtotal)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Tax (18%)</span>
-                <span className="font-medium">{formatCurrency(tax)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Shipping</span>
-                <span className="font-medium">
-                  {shipping === 0 ? 'Free' : formatCurrency(shipping)}
-                </span>
+                <span className="text-gray-600">Delivery</span>
+                <span className="font-medium">{formatCurrency(shipping)}</span>
               </div>
               <div className="border-t border-gray-200 pt-3">
                 <div className="flex justify-between text-lg font-bold">
@@ -389,15 +282,26 @@ export default function CheckoutPage() {
             <div className="text-sm text-gray-500 space-y-2">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4 text-green-500" />
-                <span>Secure payment processing</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                <span>Free delivery on orders over UGX 50,000</span>
+                <span>No extra fees. Delivery is currently free.</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Floating WhatsApp Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <a
+          href="https://wa.me/256751092016"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+        >
+          <MessageCircle className="h-6 w-6" />
+          <span className="ml-2 opacity-90 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+            Chat on WhatsApp
+          </span>
+        </a>
       </div>
     </div>
   );
